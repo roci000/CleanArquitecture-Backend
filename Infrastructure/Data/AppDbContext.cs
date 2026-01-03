@@ -11,7 +11,7 @@ namespace Infrastructure.Data
     public class AppDbContext : DbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-        public DbSet<Producto> autor { get; set; }
-        public DbSet<Proveedor> libro { get; set; }
+        public DbSet<Producto> producto { get; set; }
+        public DbSet<Proveedor> proveedor { get; set; }
     }
 }
