@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
 {
-    internal class IngresoRepository : IIngreso
+    public class IngresoRepository : IIngreso
     {
         private readonly AppDbContext _appDbContext;
 
