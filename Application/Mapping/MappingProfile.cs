@@ -16,6 +16,7 @@ namespace Application.Mapping
         {
             CreateMap<Producto, ProductoDTO>().ReverseMap();
             CreateMap<Proveedor, ProveedorDTO>().ReverseMap();
+            CreateMap<Empleado, EmpleadoDTO>().ReverseMap();
         }
     }
 }
