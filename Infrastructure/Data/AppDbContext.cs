@@ -13,6 +13,7 @@ namespace Infrastructure.Data
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
         public DbSet<Producto> producto { get; set; }
         public DbSet<Proveedor> proveedor { get; set; }
+        public DbSet<Empleado> empleado { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
