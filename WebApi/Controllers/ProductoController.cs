@@ -69,7 +69,7 @@ namespace WebApi.Controllers
             try
             {
                 var producto = _mapper.Map<Producto>(productoDTO);
-                producto.Id = Guid.NewGuid(); // si no lo incluyes en el DTO
+                producto.Id = Guid.NewGuid(); 
 
                 await _crearProducto.EjecutarAsync(producto);
 
