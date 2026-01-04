@@ -15,6 +15,7 @@ namespace Infrastructure.Data
         public DbSet<Proveedor> proveedor { get; set; }
         public DbSet<Empleado> empleado { get; set; }
         public DbSet<Cliente> cliente { get; set; }
+        public DbSet<Ingreso> ingreso { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
