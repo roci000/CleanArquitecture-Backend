@@ -23,6 +23,17 @@ namespace Infrastructure.Data
                 .Property(p => p.PrecioReferencia)
                 .HasPrecision(18, 2);
 
+            base.OnModelCreating(modelBuilder); 
+
+            modelBuilder.Entity<Ingreso>()
+                .OwnsMany(i => i.Detalles, detalle =>
+                {
+                    detalle.WithOwner();
+                    detalle.Property(p => p.ProductoId);
+                    detalle.Property(p => p.Cantidad);
+                    detalle.Property(p => p.PrecioUnitario);
+                });
+
             base.OnModelCreating(modelBuilder);
         }
     }
