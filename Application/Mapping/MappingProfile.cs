@@ -18,8 +18,8 @@ namespace Application.Mapping
             CreateMap<Proveedor, ProveedorDTO>().ReverseMap();
             CreateMap<Empleado, EmpleadoDTO>().ReverseMap();
             CreateMap<Cliente, ClienteDTO>().ReverseMap();
-            CreateMap<Ingreso, IngresoDTO>().ReverseMap();
             CreateMap<DetalleIngreso, DetalleIngresoDTO>().ReverseMap();
+            CreateMap<Ingreso, IngresoDTO>().ForMember(dest => dest.Detalles, opt => opt.MapFrom(src => src.Detalles));
         }
     }
 }
