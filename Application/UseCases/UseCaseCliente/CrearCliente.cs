@@ -20,7 +20,7 @@ namespace Application.UseCases.UseCaseCliente
         public async Task EjecutarAsync(Cliente cliente)
         {
             ValidarCliente(cliente);
-            await _cliente.Crear(cliente);
+            await _cliente.Crear(cliente);   
         }
 
         private void ValidarCliente(Cliente cliente)

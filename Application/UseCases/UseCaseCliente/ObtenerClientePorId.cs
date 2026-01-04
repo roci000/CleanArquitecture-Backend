@@ -18,7 +18,7 @@ namespace Application.UseCases.UseCaseCliente
         }
 
         public async Task<Cliente?> EjecutarAsync(Guid id)
-        {
+        {   
             if (id == Guid.Empty)
                 throw new ArgumentException("El ID del cliente es inválido.");
 

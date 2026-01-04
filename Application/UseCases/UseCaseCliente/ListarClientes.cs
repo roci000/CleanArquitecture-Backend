@@ -19,7 +19,7 @@ namespace Application.UseCases.UseCaseCliente
 
         public async Task<IEnumerable<Cliente>> EjecutarAsync()
         {
-            return await _cliente.All();
+            return await _cliente.All();  
         }
     }
 }

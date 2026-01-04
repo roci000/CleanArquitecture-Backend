@@ -21,7 +21,7 @@ namespace Application.UseCases.UseCaseCliente
             if (id == Guid.Empty)
                 throw new ArgumentException("El ID del cliente es inválido.");
 
-            await _cliente.Eliminar(id);
+            await _cliente.Eliminar(id);  
         }
     }
 }

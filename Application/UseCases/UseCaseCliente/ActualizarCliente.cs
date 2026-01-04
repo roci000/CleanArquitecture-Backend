@@ -15,7 +15,7 @@ namespace Application.UseCases.UseCaseCliente
         public ActualizarCliente(ICliente cliente)
         {
             _cliente = cliente;
-        }
+        }    
 
         public async Task EjecutarAsync(Cliente cliente)
         {
