@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Infrastructure.Repositories;
 using Application.Mapping;
 using Application.UseCases.UseCaseEmpleado;
+using Application.UseCases.UseCaseCliente;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +33,7 @@ builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 builder.Services.AddScoped<IProducto, ProductoRepository>();
 builder.Services.AddScoped<IProveedor, ProveedorRepository>();
 builder.Services.AddScoped<IEmpleado, EmpleadoRepository>();
+builder.Services.AddScoped<ICliente, ClienteRepository>();
 
 //Casos de uso - Producto
 builder.Services.AddScoped<CrearProducto>();
@@ -53,6 +55,13 @@ builder.Services.AddScoped<ActualizarEmpleado>();
 builder.Services.AddScoped<EliminarEmpleado>();
 builder.Services.AddScoped<ObtenerEmpleadoPorId>();
 builder.Services.AddScoped<ListarEmpleados>();
+
+// Casos de uso - Cliente
+builder.Services.AddScoped<CrearCliente>();
+builder.Services.AddScoped<ActualizarCliente>();
+builder.Services.AddScoped<EliminarCliente>();
+builder.Services.AddScoped<ObtenerClientePorId>();
+builder.Services.AddScoped<ListarClientes>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
