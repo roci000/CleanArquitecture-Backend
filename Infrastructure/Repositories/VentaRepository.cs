@@ -24,23 +24,38 @@ namespace Infrastructure.Repositories
         public async Task Crear(Venta venta)
         {
             venta.Id = Guid.NewGuid();
+
+            foreach (var detalle in venta.Detalles)
+            {
+                var producto = await _producto.ObtenerPorId(detalle.ProductoId);
+                producto.StockActual -= (int)detalle.Cantidad;
+                await _producto.Actualizar(producto);
+            }
+
             _appDbContext.venta.Add(venta);
             await _appDbContext.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<Venta>> All()
         {
-            return await _appDbContext.venta.Include(v => v.Detalles).Where(v => !v.Anulado).ToListAsync();
+            return await _appDbContext.venta
+                .Include(v => v.Detalles)
+                .Where(v => !v.Anulado)
+                .ToListAsync();
         }
 
         public async Task<Venta?> ObtenerPorId(Guid id)
         {
-            return await _appDbContext.venta.Include(v => v.Detalles).FirstOrDefaultAsync(v => v.Id == id && !v.Anulado);
+            return await _appDbContext.venta
+                .Include(v => v.Detalles)
+                .FirstOrDefaultAsync(v => v.Id == id && !v.Anulado);
         }
 
         public async Task AnularVenta(Guid id, string motivo)
         {
-            var venta = await _appDbContext.venta.Include(v => v.Detalles).FirstOrDefaultAsync(v => v.Id == id && !v.Anulado);
+            var venta = await _appDbContext.venta
+                .Include(v => v.Detalles)
+                .FirstOrDefaultAsync(v => v.Id == id && !v.Anulado);
 
             if (venta == null)
                 throw new ArgumentException("Venta no encontrada o ya anulada.");
@@ -63,4 +78,5 @@ namespace Infrastructure.Repositories
             await _appDbContext.SaveChangesAsync();
         }
     }
+
 }
