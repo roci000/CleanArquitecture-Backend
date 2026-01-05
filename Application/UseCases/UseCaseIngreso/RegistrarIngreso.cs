@@ -3,7 +3,6 @@ using Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Application.UseCases.UseCaseIngreso
@@ -21,7 +20,7 @@ namespace Application.UseCases.UseCaseIngreso
 
         public async Task EjecutarAsync(Ingreso ingreso)
         {
-            ValidarIngreso(ingreso);
+            await ValidarIngreso(ingreso); 
 
             ingreso.MontoTotal = ingreso.Detalles.Sum(d => d.Subtotal);
 

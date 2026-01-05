@@ -90,6 +90,7 @@ namespace Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("MontoTotal")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("MotivoAnulacion")
@@ -174,9 +175,11 @@ namespace Infrastructure.Migrations
                             SqlServerPropertyBuilderExtensions.UseIdentityColumn(b1.Property<int>("Id"));
 
                             b1.Property<decimal>("Cantidad")
+                                .HasPrecision(18, 2)
                                 .HasColumnType("decimal(18,2)");
 
                             b1.Property<decimal>("PrecioUnitario")
+                                .HasPrecision(18, 2)
                                 .HasColumnType("decimal(18,2)");
 
                             b1.Property<Guid>("ProductoId")

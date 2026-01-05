@@ -19,7 +19,7 @@ namespace Infrastructure.Migrations
                     ProveedorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     EmpleadoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FechaIngreso = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MontoTotal = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    MontoTotal = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
                     Pagado = table.Column<bool>(type: "bit", nullable: false),
                     FechaPago = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Anulado = table.Column<bool>(type: "bit", nullable: false),
@@ -38,8 +38,8 @@ namespace Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProductoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Cantidad = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    PrecioUnitario = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    Cantidad = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
+                    PrecioUnitario = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false)
                 },
                 constraints: table =>
                 {

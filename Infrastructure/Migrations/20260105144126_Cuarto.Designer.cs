@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260104221651_Cuarto")]
+    [Migration("20260105144126_Cuarto")]
     partial class Cuarto
     {
         /// <inheritdoc />
@@ -93,6 +93,7 @@ namespace Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("MontoTotal")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("MotivoAnulacion")
@@ -177,9 +178,11 @@ namespace Infrastructure.Migrations
                             SqlServerPropertyBuilderExtensions.UseIdentityColumn(b1.Property<int>("Id"));
 
                             b1.Property<decimal>("Cantidad")
+                                .HasPrecision(18, 2)
                                 .HasColumnType("decimal(18,2)");
 
                             b1.Property<decimal>("PrecioUnitario")
+                                .HasPrecision(18, 2)
                                 .HasColumnType("decimal(18,2)");
 
                             b1.Property<Guid>("ProductoId")
