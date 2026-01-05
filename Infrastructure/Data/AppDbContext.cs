@@ -16,6 +16,7 @@ namespace Infrastructure.Data
         public DbSet<Empleado> empleado { get; set; }
         public DbSet<Cliente> cliente { get; set; }
         public DbSet<Ingreso> ingreso { get; set; }
+        public DbSet<Venta> venta { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -29,6 +30,19 @@ namespace Infrastructure.Data
 
             modelBuilder.Entity<Ingreso>()
                 .OwnsMany(i => i.Detalles, detalle =>
+                {
+                    detalle.WithOwner();
+                    detalle.Property(d => d.ProductoId);
+                    detalle.Property(d => d.Cantidad).HasPrecision(18, 2);
+                    detalle.Property(d => d.PrecioUnitario).HasPrecision(18, 2);
+                });
+
+            modelBuilder.Entity<Venta>()
+                .Property(v => v.MontoTotal)
+                .HasPrecision(18, 2);
+
+            modelBuilder.Entity<Venta>()
+                .OwnsMany(v => v.Detalles, detalle =>
                 {
                     detalle.WithOwner();
                     detalle.Property(d => d.ProductoId);
