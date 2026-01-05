@@ -20,6 +20,8 @@ namespace Application.Mapping
             CreateMap<Cliente, ClienteDTO>().ReverseMap();
             CreateMap<DetalleIngreso, DetalleIngresoDTO>().ReverseMap();
             CreateMap<Ingreso, IngresoDTO>().ForMember(dest => dest.Detalles, opt => opt.MapFrom(src => src.Detalles)).ReverseMap(); ;
+            CreateMap<DetalleVenta, DetalleVentaDTO>().ReverseMap();
+            CreateMap<Venta, VentaDTO>().ForMember(dest => dest.Detalles, opt => opt.MapFrom(src => src.Detalles)).ReverseMap();
         }
     }
 }
