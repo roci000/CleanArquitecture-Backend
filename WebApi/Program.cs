@@ -9,6 +9,7 @@ using Application.Mapping;
 using Application.UseCases.UseCaseEmpleado;
 using Application.UseCases.UseCaseCliente;
 using Application.UseCases.UseCaseIngreso;
+using Application.UseCases.UseCaseVenta;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +37,8 @@ builder.Services.AddScoped<IProveedor, ProveedorRepository>();
 builder.Services.AddScoped<IEmpleado, EmpleadoRepository>();
 builder.Services.AddScoped<ICliente, ClienteRepository>();
 builder.Services.AddScoped<IIngreso, IngresoRepository>();
+builder.Services.AddScoped<IVenta, VentaRepository>();
+
 
 //Casos de uso - Producto
 builder.Services.AddScoped<CrearProducto>();
@@ -70,7 +73,13 @@ builder.Services.AddScoped<RegistrarIngreso>();
 builder.Services.AddScoped<ListarIngresos>();
 builder.Services.AddScoped<ObtenerIngresoPorId>();
 builder.Services.AddScoped<RegistrarPagoIngreso>();
-builder.Services.AddScoped<AnularIngreso>(); 
+builder.Services.AddScoped<AnularIngreso>();
+
+// Casos de uso - Venta
+builder.Services.AddScoped<RegistrarVenta>();
+builder.Services.AddScoped<ListarVentas>();
+builder.Services.AddScoped<ObtenerVentaPorId>();
+builder.Services.AddScoped<AnularVenta>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
