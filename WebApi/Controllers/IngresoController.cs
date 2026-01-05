@@ -45,6 +45,12 @@ namespace WebApi.Controllers
         public async Task<IActionResult> GetAll()
         {
             var ingresos = await _listarIngresos.EjecutarAsync();
+
+            if (!ingresos.Any())
+            {
+                return NotFound(new { mensaje = "No hay ingresos que listar" });
+            }
+
             var ingresosDto = _mapper.Map<IEnumerable<Ingreso>>(ingresos);
             return Ok(ingresosDto);
         }
