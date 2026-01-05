@@ -23,15 +23,17 @@ namespace Infrastructure.Data
                 .Property(p => p.PrecioReferencia)
                 .HasPrecision(18, 2);
 
-            base.OnModelCreating(modelBuilder); 
+            modelBuilder.Entity<Ingreso>()
+                .Property(i => i.MontoTotal)
+                .HasPrecision(18, 2);
 
             modelBuilder.Entity<Ingreso>()
                 .OwnsMany(i => i.Detalles, detalle =>
                 {
                     detalle.WithOwner();
-                    detalle.Property(p => p.ProductoId);
-                    detalle.Property(p => p.Cantidad);
-                    detalle.Property(p => p.PrecioUnitario);
+                    detalle.Property(d => d.ProductoId);
+                    detalle.Property(d => d.Cantidad).HasPrecision(18, 2);
+                    detalle.Property(d => d.PrecioUnitario).HasPrecision(18, 2);
                 });
 
             base.OnModelCreating(modelBuilder);
